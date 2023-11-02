@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.application.Platform;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 import org.migrate.migrate.jfxui.StageReadyEvent;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -12,6 +13,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
 @SpringBootApplication
+@Slf4j
 public class Migrate extends Application {
 
     private ConfigurableApplicationContext context;
@@ -37,9 +39,10 @@ public class Migrate extends Application {
     }
 
     @Override
-    public void stop() throws Exception {
+    public void stop() {
         this.context.stop();
         Platform.exit();
+        log.info("Application closed");
     }
 
 }

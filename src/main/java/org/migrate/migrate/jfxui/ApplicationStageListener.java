@@ -44,12 +44,9 @@ public class ApplicationStageListener implements ApplicationListener<StageReadyE
             appUi.setScene(scene);
             appUi.setTitle(this.appTitle);
             appUi.show();
+            log.info("Loaded user interface");
         } catch (IOException e) {
-            log.error("""
-                    
-                    *****************************
-                    Failed to load user interface
-                    *****************************""");
+            log.error("Failed to load user interface");
         }
     }
 
